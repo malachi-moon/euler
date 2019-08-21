@@ -1,0 +1,14 @@
+import Data.Char
+
+main = do
+	numString <- getLine
+	putStrLn $ show $ isPrime $ read numString
+
+mods :: Int -> [Int]
+mods n = zipWith mod (replicate (s-1) n) [2..s]
+	where s = floor.sqrt.fromIntegral $ n
+
+isPrime :: Int -> Bool
+isPrime 1 = False
+isPrime n = notElem 0 (mods n)
+
